@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yogurt
+  labels:
+    app: yogurt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yogurt
+  template:
+    metadata:
+      labels:
+        app: yogurt
+    spec:
+      containers:
+      - name: yogurt-app
+        image: akeel.jfrog.io/dev/yogurt:1.1.0
+        ports:
+        - containerPort: 80
+
+      imagePullSecrets:
+      - name: jfrogcred
+

@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webapp-ingress-service
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: / 
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /yoga
+        pathType: Prefix
+        backend:
+          service:
+            name: yoga-clusterip-service
+            port:
+              number: 80
+      - path: /space
+        pathType: Prefix
+        backend:
+          service:
+            name: space-clusterip-service
+            port:
+              number: 80
+
+      - path: /running
+        pathType: Prefix
+        backend:
+          service:
+            name: running-clusterip-service
+            port:
+              number: 80
+
+      - path: /yogurt
+        pathType: Prefix
+        backend:
+          service:
+            name: yogurt-clusterip-service
+            port:
+              number: 80
+

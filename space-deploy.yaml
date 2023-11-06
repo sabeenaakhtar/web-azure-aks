@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: space
+  labels:
+    app: space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: space
+  template:
+    metadata:
+      labels:
+        app: space
+    spec:
+      containers:
+      - name: space-app
+        image: akeel.jfrog.io/dev/space:1.1.0
+        ports:
+        - containerPort: 80
+
+      imagePullSecrets:
+      - name: jfrogcred
+

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yogurt-clusterip-service
+  labels:
+    app: yogurt
+spec:
+  type: ClusterIP
+  selector:
+    app: yogurt
+  ports:
+    - port: 80
+      targetPort: 80

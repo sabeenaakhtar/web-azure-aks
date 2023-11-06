@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yoga
+  labels:
+    app: yoga
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yoga
+  template:
+    metadata:
+      labels:
+        app: yoga
+    spec:
+      containers:
+      - name: yoga-app
+        image: akeel.jfrog.io/dev/yoga:1.1.0
+        ports:
+        - containerPort: 80
+
+      imagePullSecrets:
+      - name: jfrogcred
+

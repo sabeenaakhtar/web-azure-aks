@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: space-clusterip-service
+  labels:
+    app: space
+spec:
+  type: ClusterIP
+  selector:
+    app: space
+  ports:
+    - port: 80
+      targetPort: 80

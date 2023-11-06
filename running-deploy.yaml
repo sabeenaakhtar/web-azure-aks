@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: running
+  labels:
+    app: running
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: running
+  template:
+    metadata:
+      labels:
+        app: running
+    spec:
+      containers:
+      - name: running-app
+        image: akeel.jfrog.io/dev/running:1.1.0
+        ports:
+        - containerPort: 80
+
+      imagePullSecrets:
+      - name: jfrogcred
+
